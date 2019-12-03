@@ -1,0 +1,51 @@
+<!--
+    Name:       Omar Alkendi
+    Purpose:    A modification for Dr. Lehr's addInventory.html
+                and getForm.html for the forms to add questions to the Survey
+                instance.
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Adding questions</title>
+        <script type="text/javascript" src="getForm.js"></script>
+        <script type="text/javascript" src="Question.js"></script>
+        <script type="text/javascript" src="Survey.js"></script>
+    </head>
+
+    <body>
+        <script type="text/javascript">
+            //Get the information from the local URL
+            //Grab the info from the form
+            var url=document.location.href;
+            $_GET=getForm(url);
+            var counter=0;
+            var answers=[];
+            for(property in $_GET){
+                var str=$_GET[property];          //Place property value in string
+                var dec=decodeURIComponent(str);  //Convert to ascii
+                var clean=dec.replace(/\++/g,' ');//Remove + and replace by space
+                $_GET[property]=clean;            //Cleaned values
+                counter++;
+                if(counter>2&&clean!="")answers.push(clean); //Place answers int their own array
+            }
+            //Fill the Question with form information and display
+            var a=new Question($_GET["Number"],$_GET["Question"],answers);
+            //Retrievint the Survey
+            var str=localStorage.getItem("Survey");
+            //Parse the inventory to an object
+            var survey=JSON.parse(str);
+            var b=new Survey(survey);
+            //Adding our new question to the survey
+            b.addQues(a);
+            //Displaying the Survey with the added question
+            b.display();
+            //Display the array of objects
+            //Put back the survey (object) into local storage after adding
+            var str=JSON.stringify(b);
+            localStorage.setItem("Survey",str);
+    </script>
+    </body>
+</html>

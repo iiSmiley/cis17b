@@ -1,0 +1,29 @@
+<!--
+    Name:       Omar Alkendi
+    Purpose:    A modification for addQuestionToSurvey.html to make it display
+                the survey stored as a cookie.
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Displaying Survey</title>
+        <script type="text/javascript" src="getForm.js"></script>
+        <script type="text/javascript" src="Question.js"></script>
+        <script type="text/javascript" src="Survey.js"></script>
+        <script type="text/javascript" src="cookieFunctions.js"></script>
+    </head>
+
+    <body>
+        <script type="text/javascript">
+            //Retrievint the Survey
+            var text=getCookie("Survey");
+            //Parse the inventory to an object
+            var survey=JSON.parse(text);
+            var b=new Survey(survey);
+            //Displaying the Survey 
+            b.display();
+    </script>
+    </body>
+</html>

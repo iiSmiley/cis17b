@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="Hotspot.js"></script>
+        <script type="text/javascript" src="Item.js"></script>
+        <script type="text/javascript" src="Page.js"></script>
+    <style>
+        h1{
+            color:red;
+        }
+    </style>
+    </head>
+    <body>
+        <div id="demo0">
+        </div>
+        <div id="demo1">
+            <p id="demo2"> TODO write content</p>
+            <p id="demo3"></p>
+        </div>
+        <div id="item30">
+        </div>
+
+        <script>
+            var a1 = new Hotspot(30);
+            a1.pushCoords(242,545);
+            a1.pushCoords(666,777);
+            var a2 = new Hotspot(31);
+            a2.pushCoords(555,666);
+            a2.pushCoords(999,000);
+            var i1 = new Item(30,"Batteries", false);
+            var i2 = new Item(31,"Flashlight", false);
+            var p = new Page(1,"trunk");
+            p.pushItem(i1);
+            p.pushItemHotspot(a1);
+            p.pushItemHotspot(a2);
+            p.pushItem(i2);
+            function myFunction1() {
+                document.getElementById("demo0").innerHTML = a.getCoordsStr();
+            }
+            function myFunction2() {
+                document.getElementById("demo0").innerHTML = a.getId();
+            }
+            function myFunction3() {
+                document.getElementById("demo0").innerHTML = "<h1 color='red'>"+ a.getCoordsStr() + "</h1>";
+            }
+            function myFunction4() {
+                document.getElementById("demo0").innerHTML = i.getName()+"_"+i.getStatus();
+            }
+            function myFunction5() {
+                document.getElementById("demo1").innerHTML = "test";
+                document.getElementById("demo0").innerHTML = p.getPicName();
+            }
+            function myFunction6() {
+                document.getElementById("demo0").innerHTML = p.getItemHotspotsStr();
+            }
+            
+        </script>
+        <button onclick="myFunction1()">Try it1</button>
+        <button onclick="myFunction2()">Try it2</button>
+        <button onclick="myFunction3()">Try it3</button>
+        <button onclick="myFunction4()">Try it4</button>
+        <button onclick="myFunction5()">Try it5</button>
+        <button onclick="myFunction6()">Try it6</button>
+    </body>
+</html>

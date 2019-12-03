@@ -1,0 +1,44 @@
+<!-- 
+    Name:       Omar Alkendi
+    Purpose:    A modification for Dr. Lehr's getForm.html for the form to work
+                with the Survey Class and cookies.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Create the Survey instance</title>
+        <script type="text/javascript" src="getForm.js"></script>
+        <script type="text/javascript" src="Survey.js"></script>
+        <script type="text/javascript" src="cookieFunctions.js"></script>
+    </head>
+
+    <body>
+    <script type="text/javascript">
+        
+        //Grab the info from the form
+        var url=document.location.href;
+        $_GET=getForm(url);
+        
+        //Fill the Question with form information and display
+        var survey=new Survey($_GET["Name"],$_GET["Description"]);
+        survey.display();
+        
+        //Use JSON to turn into a string
+        var text=JSON.stringify(survey);
+                /* 
+                    document.write("The Object Stringified = "+str+"</br>");
+                    var obj=JSON.parse(str);
+                    for(property in obj){
+                        document.write(property+"="+obj[property]+"</br>");
+                    }
+                    //Reconstitue the JSON object back into a question object
+                    var b=new Survey(obj);
+                    b.display();
+                */
+        //Saving the survey as a cookie
+        setCookie("Survey",text,1);
+    
+    </script>
+    </body>
+</html>

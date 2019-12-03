@@ -1,0 +1,323 @@
+<SCRIPT LANGUAGE="JavaScript">
+
+function userNameMatchClick() {
+
+    var re = new RegExp(/^[A-Za-z0-9_-]{3,15}$/gm);
+    if (document.demoMatch.userName.value.match(re)) {
+        alert("Successful match");
+    }
+    else {
+    alert("No match");
+  }
+}
+
+function userNameShowMatchClick() {
+
+  var re = new RegExp(/^[A-Za-z0-9_-]{3,15}$/gm);
+
+  var m = re.exec(document.demoMatch.userName.value);
+
+    if (m === null) {
+    alert("No match");
+    }
+    else {
+    var s = "Match at position " + m.index + ":\n";
+    for (i = 0; i < m.length; i++) {
+
+      s = s + m[i] + "\n";
+    }
+    alert(s);
+    }
+}
+
+function passwordMatchClick() {
+
+    var re = new RegExp(/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-_!@#$%]).{6,20})/m);
+    if (document.demoMatch.password.value.match(re)) {
+        alert("Successful match");
+    }
+    else {
+    alert("No match");
+  }
+}
+function passwordShowMatchClick() {
+
+  var re = new RegExp(/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-_!@#$%]).{6,20})/m);
+
+  var m = re.exec(document.demoMatch.password.value);
+
+    if (m === null) {
+    alert("No match");
+    }
+    else {
+    var s = "Match at position " + m.index + ":\n";
+    for (i = 0; i < m.length; i++) {
+
+      s = s + m[i] + "\n";
+    }
+    alert(s);
+    }
+}
+
+
+function hexColorMatchClick() {
+
+    var re = new RegExp(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/m);
+    if (document.demoMatch.hexColor.value.match(re)) {
+        alert("Successful match");
+    }
+    else {
+    alert("No match");
+  }
+}
+function hexColorShowMatchClick() {
+
+  var re = new RegExp(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/m);
+
+  var m = re.exec(document.demoMatch.hexColor.value);
+
+    if (m === null) {
+    alert("No match");
+    }
+    else {
+    var s = "Match at position " + m.index + ":\n";
+    for (i = 0; i < m.length; i++) {
+
+      s = s + m[i] + "\n";
+    }
+    alert(s);
+    }
+}
+
+function emailMatchClick() {
+
+    var re = new RegExp(/^[_A-Za-z0-9-\\\\+]+(\\\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(.[A-Za-z0-9]+)*(.[A-Za-z]{2,})$/m);
+    if (document.demoMatch.email.value.match(re)) {
+        alert("Successful match");
+    }
+    else {
+    alert("No match");
+  }
+}
+function emailShowMatchClick() {
+
+  var re = new RegExp(/^[_A-Za-z0-9-\\\\+]+(\\\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(.[A-Za-z0-9]+)*(.[A-Za-z]{2,})$/m);
+
+  var m = re.exec(document.demoMatch.email.value);
+
+    if (m === null) {
+    alert("No match");
+    }
+    else {
+    var s = "Match at position " + m.index + ":\n";
+    for (i = 0; i < m.length; i++) {
+
+      s = s + m[i] + "\n";
+    }
+    alert(s);
+    }
+}
+
+function imageMatchClick() {
+
+    var re = new RegExp(/([^\s]+(\.(?i)(jpg|png|gif|bmp))$)/m);
+    if (document.demoMatch.image.value.match(re)) {
+        alert("Successful match");
+    }
+    else {
+    alert("No match");
+  }
+}
+function imageShowMatchClick() {
+
+  var re = new RegExp(/([^\s]+(\.(?i)(jpg|png|gif|bmp))$)/m);
+
+  var m = re.exec(document.demoMatch.image.value);
+
+    if (m === null) {
+    alert("No match");
+    }
+    else {
+    var s = "Match at position " + m.index + ":\n";
+    for (i = 0; i < m.length; i++) {
+
+      s = s + m[i] + "\n";
+    }
+    alert(s);
+    }
+}
+
+function ipMatchClick() {
+
+    var re = new RegExp(/\s*^(([0-9])|([0-9][0-9])|([1-9][0-9])|([1][0-9][0-9])|([2][0-5][0-5]))[.](([0-9])|([0-9][0-9])|([1-9][0-9])|([1][0-9][0-9])|([2][0-5][0-5]))[.](([0-9])|([0-9][0-9])|([1-9][0-9])|([1][0-9][0-9])|([2][0-5][0-5]))[.](([0-9])|([0-9][0-9])|([1-9][0-9])|([1][0-9][0-9])|([2][0-5][0-5]))*\s*$/m);
+    if (document.demoMatch.ip.value.match(re)) {
+        alert("Successful match");
+    }
+    else {
+    alert("No match");
+  }
+}
+function ipShowMatchClick() {
+
+  var re = new RegExp(/\s*^(([0-9])|([0-9][0-9])|([1-9][0-9])|([1][0-9][0-9])|([2][0-5][0-5]))[.](([0-9])|([0-9][0-9])|([1-9][0-9])|([1][0-9][0-9])|([2][0-5][0-5]))[.](([0-9])|([0-9][0-9])|([1-9][0-9])|([1][0-9][0-9])|([2][0-5][0-5]))[.](([0-9])|([0-9][0-9])|([1-9][0-9])|([1][0-9][0-9])|([2][0-5][0-5]))*\s*$/m);
+
+  var m = re.exec(document.demoMatch.ip.value);
+
+    if (m === null) {
+    alert("No match");
+    }
+    else {
+    var s = "Match at position " + m.index + ":\n";
+    for (i = 0; i < m.length; i++) {
+
+      s = s + m[i] + "\n";
+    }
+    alert(s);
+    }
+}
+
+function time1MatchClick() {
+
+    var re = new RegExp(/(1[012]|[1-9]):[0-5][0-9](\\\\s)?(?i)(am|pm)/m);
+    if (document.demoMatch.time1.value.match(re)) {
+        alert("Successful match");
+    }
+    else {
+    alert("No match");
+  }
+}
+function time1ShowMatchClick() {
+
+  var re = new RegExp(/(1[012]|[1-9]):[0-5][0-9](\\\\s)?(?i)(am|pm)/m);
+  var m = re.exec(document.demoMatch.time1.value);
+
+    if (m === null) {
+    alert("No match");
+    }
+    else {
+    var s = "Match at position " + m.index + ":\n";
+    for (i = 0; i < m.length; i++) {
+
+      s = s + m[i] + "\n";
+    }
+    alert(s);
+    }
+}
+
+function time2MatchClick() {
+
+    var re = new RegExp(/([01]?[0-9]|2[0-3]):[0-5][0-9]/m);
+    if (document.demoMatch.time2.value.match(re)) {
+        alert("Successful match");
+    }
+    else {
+    alert("No match");
+  }
+}
+function time2ShowMatchClick() {
+
+  var re = new RegExp(/([01]?[0-9]|2[0-3]):[0-5][0-9]/m);
+  var m = re.exec(document.demoMatch.time2.value);
+
+    if (m === null) {
+    alert("No match");
+    }
+    else {
+    var s = "Match at position " + m.index + ":\n";
+    for (i = 0; i < m.length; i++) {
+
+      s = s + m[i] + "\n";
+    }
+    alert(s);
+    }
+}
+
+function dateMatchClick() {
+
+    var re = new RegExp(/(0?[1-9]|[12][0-9]|3[01])\/(0?[1-9]|1[012])\/((19|20)\d\d)/m);
+    if (document.demoMatch.date.value.match(re)) {
+        alert("Successful match");
+    }
+    else {
+    alert("No match");
+    }
+}
+function dateShowMatchClick() {
+
+  var re = new RegExp(/(0?[1-9]|[12][0-9]|3[01])\/(0?[1-9]|1[012])\/((19|20)\d\d)/m);
+  var m = re.exec(document.demoMatch.date.value);
+
+    if (m === null) {
+    alert("No match");
+    }
+    else {
+    var s = "Match at position " + m.index + ":\n";
+    for (i = 0; i < m.length; i++) {
+
+      s = s + m[i] + "\n";
+    }
+    alert(s);
+    }
+}
+</SCRIPT>
+
+
+
+<FORM ID="demoMatch" NAME="demoMatch" METHOD=POST ACTION="javascript:void(0)">
+
+<P>Username: <INPUT TYPE=TEXT NAME="userName" SIZE=50></P>
+
+<P><INPUT TYPE=SUBMIT VALUE="Test Match" ONCLICK="userNameMatchClick()">
+
+<INPUT TYPE=SUBMIT VALUE="Show Match" ONCLICK="userNameShowMatchClick()"></P>
+
+<P>Password: <INPUT TYPE=password NAME="password" SIZE=50></P>
+
+<P><INPUT TYPE=SUBMIT VALUE="Test Match" ONCLICK="passwordMatchClick()">
+
+<INPUT TYPE=SUBMIT VALUE="Show Match" ONCLICK="passwordShowMatchClick()"></P>
+
+<P>Hexadecimal Color: <INPUT TYPE=TEXT NAME="hexColor" SIZE=50></P>
+
+<P><INPUT TYPE=SUBMIT VALUE="Test Match" ONCLICK="hexColorMatchClick()">
+
+<INPUT TYPE=SUBMIT VALUE="Show Match" ONCLICK="hexColorShowMatchClick()"></P>
+
+<P>Email: <INPUT TYPE=TEXT NAME="email" SIZE=50></P>
+
+<P><INPUT TYPE=SUBMIT VALUE="Test Match" ONCLICK="emailMatchClick()">
+
+<INPUT TYPE=SUBMIT VALUE="Show Match" ONCLICK="emailShowMatchClick()"></P>
+
+<P>Image: <INPUT TYPE=TEXT NAME="image" SIZE=50></P>
+
+<P><INPUT TYPE=SUBMIT VALUE="Test Match" ONCLICK="imagelMatchClick()">
+
+<INPUT TYPE=SUBMIT VALUE="Show Match" ONCLICK="imageShowMatchClick()"></P>
+
+<P>IP: <INPUT TYPE=TEXT NAME="ip" SIZE=50></P>
+
+<P><INPUT TYPE=SUBMIT VALUE="Test Match" ONCLICK="ipMatchClick()">
+
+<INPUT TYPE=SUBMIT VALUE="Show Match" ONCLICK="ipShowMatchClick()"></P>
+
+<P>Time-12H: <INPUT TYPE=TEXT NAME="time1" SIZE=50></P>
+
+<P><INPUT TYPE=SUBMIT VALUE="Test Match" ONCLICK="time1MatchClick()">
+
+<INPUT TYPE=SUBMIT VALUE="Show Match" ONCLICK="time1ShowMatchClick()"></P>
+
+<P>Time-24H: <INPUT TYPE=TEXT NAME="time2" SIZE=50></P>
+
+<P><INPUT TYPE=SUBMIT VALUE="Test Match" ONCLICK="time2MatchClick()">
+
+<INPUT TYPE=SUBMIT VALUE="Show Match" ONCLICK="time2ShowMatchClick()"></P>
+
+<P>Date: <INPUT TYPE=TEXT NAME="date" SIZE=50></P>
+
+<P><INPUT TYPE=SUBMIT VALUE="Test Match" ONCLICK="dateMatchClick()">
+
+<INPUT TYPE=SUBMIT VALUE="Show Match" ONCLICK="dateShowMatchClick()"></P>
+
+
+</FORM>
