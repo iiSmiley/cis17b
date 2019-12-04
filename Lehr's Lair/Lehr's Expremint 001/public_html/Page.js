@@ -57,8 +57,12 @@ Page.prototype.addItem=function(itemId, itemName) {
 Page.prototype.pushItem=function(item) {
     this.pageItems.push(item);
 };
+Page.prototype.getPageId=function() {
+    return this.pageId;
+};
 Page.prototype.getPicName=function() {
-    var picStr="Car/"+this.pageName;
+    var picStr=""+this.pageName;
+
     for(var i=0; i<this.pageItems.length; i++){
         picStr+=this.pageItems[i].getStatus();
     }
@@ -75,11 +79,19 @@ Page.prototype.getItemHotspotsStr=function(){
                 if(this.pageItems[i].getStatus()===false)
                 {
                     //document.getElementById("demo1").innerHTML = "test if 2";
-                    // outputs: <area shape="rect" coords="633,115,931,244" alt="Glove" onclick="function">
+                    //outputs: <area shape="rect" coords="633,115,931,244" alt="Glove" onclick="function">
                     itemsHotspotStr += "area shape='rect' coords='"+this.itemsHotspots[j].getCoordsStr()+"' alt='"+this.pageItems[i].getName()+"' onclick='function"+this.pageItems[i].getId()+"()'";
                 }
             }
         }
     }
     return itemsHotspotStr;
+};
+Page.prototype.getPageHotspotsStr=function() {
+    var pagesHotspotsStr="";
+    for(var i=0; i<this.pagesHotspot.length; i++)
+    {
+        pagesHotspotsStr += "area shape='rect' coords='"+this.pagesHotspots[i].getCoordsStr()+"' onclick='function"+this.pageHotspot[i].getId()+"()'";
+    }
+    return pagesHotspotsStr;
 };

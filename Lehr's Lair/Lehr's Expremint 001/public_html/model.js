@@ -11,6 +11,7 @@ function model(pages, items) {
         this.currentPage=0;
         this.startTime=getTime();
         this.endTime=0;
+        this.lightStatus=false;
     }
     else {
         this.pages=[];
@@ -18,5 +19,43 @@ function model(pages, items) {
         this.currentPage=0;
         this.startTime=getTime();
         this.endTime=0;
+        this.lightStatus=false;
     }
+};
+model.prototype.setLightStatusOn=function() {
+    this.lightStatus=true;
+};
+model.prototype.setLightStatusOff=function() {
+    this.lightStatus=false;
+};
+model.prototype.getLightStatus=function() {
+    return this.lightStatus;
+};
+model.prototype.pushItem=function(item) {
+    this.items.push(item);
+};
+model.prototype.pushPage=function(page) {
+    this.pages.push(page);
+};
+model.prototype.setCurrentPage=function(pageId) {
+    this.currentPage=pageId;
+};
+model.prototype.findPageIndex=function() {
+    for(var i=0; i<this.pages.length; i++) {
+        if(this.pages[i].getPageId()===this.currentPage) {
+            return i;
+        }
+    }
+};
+model.prototype.getPagePic=function() {
+    var i=findPageIndex();
+    var picStr="";
+    if(this.lightStatus===false) {
+        picStr +="Car_Dark/";
+    }
+    else {
+        picStr +="Car_Lit/";
+    }
+    return picStr+this.pages[i].getPicStr();
+    
 };
