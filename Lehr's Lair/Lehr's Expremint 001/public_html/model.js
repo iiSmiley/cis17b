@@ -31,6 +31,9 @@ model.prototype.setLightStatusOff=function() {
 model.prototype.getLightStatus=function() {
     return this.lightStatus;
 };
+model.prototype.getCurrentPage=function() {
+    return this.currentPage;
+}
 model.prototype.pushItem=function(item) {
     this.items.push(item);
 };
@@ -48,7 +51,7 @@ model.prototype.findPageIndex=function() {
     }
 };
 model.prototype.findItemIndex=function(itemId) {
-    var p = findPageIndex();
+    var p = this.findPageIndex();
     for(var i=0; i<this.pages[p].pageItems.length; i++)
     {
         if(this.pages[p].pageItems[i].getId===itemId) {
@@ -56,12 +59,27 @@ model.prototype.findItemIndex=function(itemId) {
         }
     }
 };
+model.prototype.setItemStatusTrue=function(itemId) {
+    for(var i=0; i<this.items.length; i++) {
+        if(this.items[i].getId===itemId) {
+            this.items[i].setStatusTrue();
+        }
+    }
+    for(var p=0; p<this.pages.length; p++) {
+        for(var i=0; i<this.pages[p].pageItems.length; i++)
+        {
+            if(this.pages[p].pageItems[i].getId()===itemId) {
+                this.pages[p].pageItems[i].setStatusFalse();
+            }
+        }
+    }
+}
 model.prototype.getPagePic=function() {
-    var index=0;
-    for(var i=0; i<this.pages.length; i++) {
+    var i=this.findPageIndex();
+    /*for(var i=0; i<this.pages.length; i++) {
         if(this.pages[i].getPageId()===this.currentPage) 
             index = i;
-        }
+        }*/
     var picStr="";
     if(this.lightStatus===false) {
         picStr +="Car_Dark/";
@@ -69,8 +87,16 @@ model.prototype.getPagePic=function() {
     else {
         picStr +="Car_Lit/";
     }
-        picStr += this.pages[index].getPicName();
+        picStr += this.pages[i].getPicName();
     return picStr;
+};
+model.prototype.getPagesHotspots=function() {
+    var i=this.findPageIndex();
+    return this.pages[i].getPageHotspotsStr();
+};
+model.prototype.getItemsHotspots=function() {
+    var i=this.findPageIndex();
+    return this.pages[i].getItemHotspotsStr();
 };
 model.prototype.setEndTime=function() {
     this.endTime = new Date().getTime();

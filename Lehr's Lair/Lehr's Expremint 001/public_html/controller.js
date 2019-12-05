@@ -162,13 +162,74 @@
                 image.src = level.getPagePic();
             }
             function myFunction4() {
-                document.getElementById("demo0").innerHTML = i1.getName()+"_"+i1.getStatus();
+                document.getElementById("demo0").innerHTML = level.findPageIndex();
             }
             function myFunction5() {
-                document.getElementById("demo0").innerHTML = p.getPicName();
+                document.getElementById("pageHotspots").innerHTML = level.getPagesHotspots();
             }
             function myFunction6() {
-                document.getElementById("pageItems").innerHTML = p.getItemHotspotsStr();
+                document.getElementById("pageItems").innerHTML = level.getItemsHotspots();
+            }
+            function function10() {
+                level.setCurrentPage(10);
+                update();
+            }
+            function function100() {
+                level.setCurrentPage(100);
+                update();
+            }
+            function function101() {
+                level.setCurrentPage(101);
+                update();
+            }
+            function function102() {
+                level.setCurrentPage(102);
+                update();
+            }
+            function function103() {
+                level.setCurrentPage(103);
+                update();
+            }
+            function function999() {
+                if(99< level.getCurrentPage() && level.getCurrentPage()<104) {
+                    level.setCurrentPage(10)
+                }
+                else {
+                    level.setCurrentPage(1);
+                }
+                
+                update();
+            }
+            function turnOnTheGodDamnLights() {
+                
+            }
+            function function30() {
+                
+            }
+
+            function function31() {
+
+            }
+            function function32() {
+
+            }
+            function function33() {
+
+            }
+            function function34() {
+
+            }
+            function function35() {
+
+            }
+            function function36() {
+
+            }
+            function update () {
+                var image = document.getElementById("pageImage");
+                image.src = level.getPagePic();
+                document.getElementById("pageHotspots").innerHTML = level.getPagesHotspots();
+                document.getElementById("pageItems").innerHTML = level.getItemsHotspots();
             }
             function myFunction7() {
                 //document.getElementById("demo2").innerHTML = "function7";

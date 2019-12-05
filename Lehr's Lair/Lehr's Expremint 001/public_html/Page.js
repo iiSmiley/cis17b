@@ -9,7 +9,7 @@ function Page(pageId, pageName, itemsHotspots, pageItems, pagesHotspot) {
         this.pageId=pageId;
         this.pageName=pageName;
         this.itemsHotspots=itemsHotspots;
-        this.pagesHotspot=pagesHotspot;
+        this.pagesHotspots=pagesHotspot;
         this.pageItems=pageItems;
     }
     //If the hotspots and items will be added later
@@ -80,8 +80,8 @@ Page.prototype.getItemHotspotsStr=function(){
                 {
                     //document.getElementById("demo1").innerHTML = "test if 2";
                     //outputs: <area shape="rect" coords="633,115,931,244" alt="Glove" onclick="function">
-                    //itemsHotspotStr += "<area shape='rect' coords='"+this.itemsHotspots[j].getCoordsStr()+"' alt='"+this.pageItems[i].getName()+"' onclick='function"+this.pageItems[i].getId()+"()'>";
-                    itemsHotspotStr += "<area shape='rect' coords='"+this.itemsHotspots[j].getCoordsStr()+"' alt='"+this.pageItems[i].getName()+"' onclick='alert()'>";
+                    itemsHotspotStr += "<area shape='rect' coords='"+this.itemsHotspots[j].getCoordsStr()+"' alt='"+this.pageItems[i].getName()+"' onclick='function"+this.pageItems[i].getId()+"()'>";
+                    //itemsHotspotStr += "<area shape='rect' coords='"+this.itemsHotspots[j].getCoordsStr()+"' alt='"+this.pageItems[i].getName()+"' onclick='alert()'>";
                 }
             }
         }
@@ -90,9 +90,13 @@ Page.prototype.getItemHotspotsStr=function(){
 };
 Page.prototype.getPageHotspotsStr=function() {
     var pagesHotspotsStr="";
-    for(var i=0; i<this.pagesHotspot.length; i++)
+    document.getElementById("demo0").innerHTML = "Hello from hot pages"+this.page;
+    for(var i=0; i<this.pagesHotspots.length; i++)
     {
-        pagesHotspotsStr += "<area shape='rect' coords='"+this.pagesHotspots[i].getCoordsStr()+"' onclick='function"+this.pageHotspot[i].getId()+"()'>";
+        document.getElementById("demo0").innerHTML = "Hello from for";
+        //pagesHotspotsStr += "<area shape='rect' coords='"+this.pagesHotspots[i].getCoordsStr()+"' onclick='alert()'>";
+        pagesHotspotsStr += "<area shape='rect' coords='"+this.pagesHotspots[i].getCoordsStr()+"' onclick='function"+this.pagesHotspots[i].getId()+"()'>";
     }
+    document.getElementById("demo0").innerHTML = "Hello from return";
     return pagesHotspotsStr;
 };

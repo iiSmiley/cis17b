@@ -5,6 +5,8 @@
  */
     window.onload = initiate;
     
+    //Model initiation
+    var level = new model();
     function initiate() {
                 //Items Hotspots initiation:
                 //Batteries
@@ -130,8 +132,7 @@
                 //gloveBox->frontSeat
                 p5.pushPageHotspot(a12);
                 
-                //Model initiation
-                var level = new model();
+                
                 
                 //Shoving level items
                 level.pushItem(i0);
@@ -151,7 +152,7 @@
                 level.pushPage(p5);
                 level.pushPage(p6);
             }
-            
+    /*        
     function cleanPageItems() {
                     document.getElementById("pageItems").innerHTML = "";
             }
@@ -160,19 +161,61 @@
                     document.getElementById("pageItems").innerHTML = "";
     }
     
-    function changeImage() {
-                var image = document.getElementById("pageImage");
-                if(image.getAttribute("src")==="Car_Lit/trunkfalse.png") {
-                    image.src = "Car_Lit/trunktrue.png";
+    function cleanPageHotspots() {
+        document.getElementById("pageItems").innerHTML = "";
+        document.getElementById("pageItems").innerHTML = "";
+    }
+    function updatePage() {
+        var image = document.getElementById("pageImage");
+        image.src = level.getPagePic();
+    }
+            
+    function updatePageHotspots () {
+        document.getElementById("pageHotspots").innerHTML = level.getPagesHotspots();
+        document.getElementById("pageItems").innerHTML = level.getItemsHotspots();
+    }*/
+    
+    function update () {
+        var image = document.getElementById("pageImage");
+        image.src = level.getPagePic();
+        document.getElementById("pageHotspots").innerHTML = level.getPagesHotspots();
+        document.getElementById("pageItems").innerHTML = level.getItemsHotspots();
+    }
+    function function10() {
+                level.setCurrentPage(10);
+                update();
+            }
+            function function100() {
+                level.setCurrentPage(100);
+                update();
+            }
+            function function101() {
+                level.setCurrentPage(101);
+                update();
+            }
+            function function102() {
+                level.setCurrentPage(102);
+                update();
+            }
+            function function103() {
+                level.setCurrentPage(103);
+                update();
+            }
+            function function999() {
+                if(99< level.getCurrentPage() && level.getCurrentPage()<104) {
+                    level.setCurrentPage(10)
                 }
                 else {
-                    image.src = "Car_Lit/trunkfalse.png";
+                    level.setCurrentPage(1);
                 }
+                
+                update();
             }
             
     function function30() {
         
     }
+    
     function function31() {
         
     }
