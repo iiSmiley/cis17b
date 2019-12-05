@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+ * Author:      Omar Alkendi
+ * Purpose:     index is the slave page for the iframes.
+-->
+<html>
+    <head>
+        <title>Lehr's Lair Final</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="Hotspot.js"></script>
+        <script type="text/javascript" src="Item.js"></script>
+        <script type="text/javascript" src="Page.js"></script>
+        <script type="text/javascript" src="model.js"></script>
+        <script type="text/javascript" src="trunkController.js"></script>
+    <style>
+        body {
+            background-image:url("GameBorder.png");
+            height: 1240px;
+            width: 1010px;
+            background-repeat: no-repeat; /* Do not repeat the image */
+            background-color: black;
+        }
+            
+        img#pageImage {
+            position: absolute;
+            top: 52px;
+            left:100px;
+        }
+            
+        div#msgArea {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background-color: whitesmoke;
+            width: 1240px;
+            border: 2px solid black;
+            padding: 5px;
+            margin: 5px;
+            }
+    </style>
+    </head>
+    <body>
+        <div id="msgArea">It is dark in the trunk!</div>
+        <img id ="pageImage" src ="Car_Dark/trunkfalse.png" usemap="#hotspots"/>        
+        <map name="hotspots">
+            <div id="pageHotspots"></div>
+            <div id="pageItems"></div>
+        </map>
+    </body>
+</html>

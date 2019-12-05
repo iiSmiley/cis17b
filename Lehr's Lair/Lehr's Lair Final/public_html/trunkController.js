@@ -1,7 +1,7 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*
+ * Author:      Omar Alkendi
+ * Purpose:     The controller is a function that takes the value of the hot spot
+ *              and modifies the view accordingly.
  */
     window.onload = initiate;
     
@@ -151,29 +151,8 @@
         level.pushPage(p4);
         level.pushPage(p5);
         level.pushPage(p6);
+        update();
     }
-    /*        
-    function cleanPageItems() {
-                    document.getElementById("pageItems").innerHTML = "";
-            }
-    
-    function cleanPageHotspots() {
-                    document.getElementById("pageItems").innerHTML = "";
-    }
-    
-    function cleanPageHotspots() {
-        document.getElementById("pageItems").innerHTML = "";
-        document.getElementById("pageItems").innerHTML = "";
-    }
-    function updatePage() {
-        var image = document.getElementById("pageImage");
-        image.src = level.getPagePic();
-    }
-            
-    function updatePageHotspots () {
-        document.getElementById("pageHotspots").innerHTML = level.getPagesHotspots();
-        document.getElementById("pageItems").innerHTML = level.getItemsHotspots();
-    }*/
     
     function update () {
         var image = document.getElementById("pageImage");
@@ -217,34 +196,53 @@
                 
         update();
     }
+    
+    function turnOnTheGodDamnLight() {
+        level.setLightStatusOn();
+        msg("Now I can see where the hell I am.");
+    }
             
     function function30() {
         level.setItemStatusTrue(30);
+        if(level.getItemStatus(31)===false) {
+            msg("This feels like a battery. Only if I had a flash light, would I be able to make some light.");
+        }
         if(level.getItemStatus(30)===true && level.getItemStatus(31)===true){
-            level.setLightStatusOn();
+            turnOnTheGodDamnLight();
         }
         update();
     }
     
     function function31() {
         level.setItemStatusTrue(31);
+        if(level.getItemStatus(30)===false) {
+            msg("A flash light! Dang it. It is out of juice. Maybe a battery would make it work.");
+        }
         if(level.getItemStatus(30)===true && level.getItemStatus(31)===true){
-            level.setLightStatusOn();
+            turnOnTheGodDamnLight();
         }
         update();
     }
     
     function function32() {
-        level.setItemStatusTrue(32);
-        update();
+        if(level.getLightStatus()===true) {
+            level.setItemStatusTrue(32);
+            update();
+        }
+        else {
+            msg("I feel something in here, but I can't tell what it is.");
+        }
     }
     
     function function33() {
         if(level.getItemStatus(32)===true) {
             level.setItemStatusTrue(33);
         }
+        else if (level.getLightStatus()===false){
+            msg("Is that some spaghetti under the wheel?");
+        }
         else {
-            
+            msg("These wire are hard to cut without a tool!");
         }
         update();
     }
@@ -253,8 +251,11 @@
         if(level.getItemStatus(32)===true) {
             level.setItemStatusTrue(34);
         }
+        else if (level.getLightStatus()===false){
+            msg("Is that some spaghetti under the wheel?");
+        }
         else {
-            
+            msg("These wire are hard to cut without a tool!");
         }
         update();
     }
@@ -263,8 +264,11 @@
         if(level.getItemStatus(32)===true) {
             level.setItemStatusTrue(35);
         }
+        else if (level.getLightStatus()===false){
+            msg("Is that some spaghetti under the wheel?");
+        }
         else {
-            
+            msg("These wire are hard to cut without a tool!");
         }
         update();
     }
@@ -282,5 +286,10 @@
     
     function endGame() {
         level.setEndTime();
-        alert("Congratulations! You were able to escape the lair.");
+        var time = level.getGameTime();
+        alert("Congratulations! You were able to escape the lair in "+time+ "seconds!");
+    }
+    
+    function msg(string) {
+        document.getElementById("msgArea").innerHTML = string;
     }

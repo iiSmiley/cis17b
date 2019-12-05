@@ -103,3 +103,6 @@ model.prototype.getItemsHotspots=function() {
 model.prototype.setEndTime=function() {
     this.endTime = new Date().getTime();
 };
+model.prototype.getGameTime=function() {
+    return (this.endTime-this.startTime)/1000;
+};
