@@ -80,7 +80,8 @@ Page.prototype.getItemHotspotsStr=function(){
                 {
                     //document.getElementById("demo1").innerHTML = "test if 2";
                     //outputs: <area shape="rect" coords="633,115,931,244" alt="Glove" onclick="function">
-                    itemsHotspotStr += "area shape='rect' coords='"+this.itemsHotspots[j].getCoordsStr()+"' alt='"+this.pageItems[i].getName()+"' onclick='function"+this.pageItems[i].getId()+"()'";
+                    //itemsHotspotStr += "<area shape='rect' coords='"+this.itemsHotspots[j].getCoordsStr()+"' alt='"+this.pageItems[i].getName()+"' onclick='function"+this.pageItems[i].getId()+"()'>";
+                    itemsHotspotStr += "<area shape='rect' coords='"+this.itemsHotspots[j].getCoordsStr()+"' alt='"+this.pageItems[i].getName()+"' onclick='alert()'>";
                 }
             }
         }
@@ -91,7 +92,7 @@ Page.prototype.getPageHotspotsStr=function() {
     var pagesHotspotsStr="";
     for(var i=0; i<this.pagesHotspot.length; i++)
     {
-        pagesHotspotsStr += "area shape='rect' coords='"+this.pagesHotspots[i].getCoordsStr()+"' onclick='function"+this.pageHotspot[i].getId()+"()'";
+        pagesHotspotsStr += "<area shape='rect' coords='"+this.pagesHotspots[i].getCoordsStr()+"' onclick='function"+this.pageHotspot[i].getId()+"()'>";
     }
     return pagesHotspotsStr;
 };

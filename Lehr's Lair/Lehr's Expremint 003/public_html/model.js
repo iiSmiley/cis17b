@@ -47,18 +47,8 @@ model.prototype.findPageIndex=function() {
         }
     }
 };
-model.prototype.findItemIndex=function(itemId) {
-    var p = findPageIndex();
-    for(var i=0; i<this.pages[p].pageItems.length; i++)
-    {
-        if(this.pages[p].pageItems[i].getId===itemId)
-        {
-            return i;
-        }
-    }
-};
 model.prototype.getPagePic=function() {
-    var i=findPageIndex(this.currentPage);
+    var i=findPageIndex();
     var picStr="";
     if(this.lightStatus===false) {
         picStr +="Car_Dark/";
@@ -66,9 +56,6 @@ model.prototype.getPagePic=function() {
     else {
         picStr +="Car_Lit/";
     }
-        picStr += this.pages[i].getPicName();
-    return picStr;
-};
-model.prototype.setEndTime=function() {
-    this.endTime = getTime();
+    return picStr+this.pages[i].getPicStr();
+    
 };

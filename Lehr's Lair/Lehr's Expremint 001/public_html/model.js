@@ -9,15 +9,15 @@ function model(pages, items) {
         this.pages=pages;
         this.items=items;
         this.currentPage=0;
-        this.startTime=getTime();
+        this.startTime= new Date().getTime();
         this.endTime=0;
         this.lightStatus=false;
     }
     else {
         this.pages=[];
         this.items=[];
-        this.currentPage=0;
-        this.startTime=getTime();
+        this.currentPage=1;
+        this.startTime=new Date().getTime();
         this.endTime=0;
         this.lightStatus=false;
     }
@@ -47,8 +47,21 @@ model.prototype.findPageIndex=function() {
         }
     }
 };
+model.prototype.findItemIndex=function(itemId) {
+    var p = findPageIndex();
+    for(var i=0; i<this.pages[p].pageItems.length; i++)
+    {
+        if(this.pages[p].pageItems[i].getId===itemId) {
+            return i;
+        }
+    }
+};
 model.prototype.getPagePic=function() {
-    var i=findPageIndex();
+    var index=0;
+    for(var i=0; i<this.pages.length; i++) {
+        if(this.pages[i].getPageId()===this.currentPage) 
+            index = i;
+        }
     var picStr="";
     if(this.lightStatus===false) {
         picStr +="Car_Dark/";
@@ -56,6 +69,9 @@ model.prototype.getPagePic=function() {
     else {
         picStr +="Car_Lit/";
     }
-    return picStr+this.pages[i].getPicStr();
-    
+        picStr += this.pages[index].getPicName();
+    return picStr;
+};
+model.prototype.setEndTime=function() {
+    this.endTime = new Date().getTime();
 };
