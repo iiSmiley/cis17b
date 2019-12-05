@@ -216,7 +216,7 @@
     function function31() {
         level.setItemStatusTrue(31);
         if(level.getItemStatus(30)===false) {
-            msg("A flash light! Dang it. It is out of juice. Maybe a battery would make it work.");
+            msg("A flash light! Sweet. Oh! It is not working. Maybe a battery would make it work.");
         }
         if(level.getItemStatus(30)===true && level.getItemStatus(31)===true){
             turnOnTheGodDamnLight();
@@ -230,7 +230,7 @@
             update();
         }
         else {
-            msg("I feel something in here, but I can't tell what it is.");
+            msg("I feel something in here, but I can't tell what it is. It feels dangerous, nonetheless.");
         }
     }
     
@@ -252,7 +252,7 @@
             level.setItemStatusTrue(34);
         }
         else if (level.getLightStatus()===false){
-            msg("Is that some spaghetti under the wheel?");
+            msg("Is that some spaghetti down here?");
         }
         else {
             msg("These wire are hard to cut without a tool!");
@@ -265,7 +265,7 @@
             level.setItemStatusTrue(35);
         }
         else if (level.getLightStatus()===false){
-            msg("Is that some spaghetti under the wheel?");
+            msg("Is that some spaghetti down here?");
         }
         else {
             msg("These wire are hard to cut without a tool!");
