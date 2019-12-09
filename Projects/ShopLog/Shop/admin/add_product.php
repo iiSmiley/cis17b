@@ -1,5 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php
+session_start();
+    require ('../includes/login_functions.inc.php');
+    if($_SESSION['user_level']!=1) {
+        redirect_user("access_denied.php");
+    }
+?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -24,27 +31,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 	}
 	
 	// Check for an image:
-	if (is_uploaded_file ($_FILES['image']['tmp_name'])) {
+	if (is_uploaded_file ($_FILES['img']['tmp_name'])) {
 
 		// Create a temporary file name:
                 //$uploaddir = '../../uploads/';
-                //$uploadfile = $uploaddir . basename($_FILES['image']['tmp_name']);
-		$temp = '../../uploads/' . md5($_FILES['image']['name']);
+                //$uploadfile = $uploaddir . basename($_FILES['img']['tmp_name']);
+		$temp = '../../uploads/' . md5($_FILES['img']['name']);
 	
 		// Move the file over:
-		if (move_uploaded_file($_FILES['image']['tmp_name'], $temp)) {
+		if (move_uploaded_file($_FILES['img']['tmp_name'], $temp)) {
 
 			echo '<p>The file has been uploaded!</p>';
 	
 			// Set the $i variable to the image's name:
-			$i = $_FILES['image']['name'];
+			$i = $_FILES['img']['name'];
 	
-		} else { // Couldn't move the file over.
+		}
+                else { // Couldn't move the file over.
 			$errors[] = 'The file could not be moved.';
-			$temp = $_FILES['image']['tmp_name'];
+			$temp = $_FILES['img']['tmp_name'];
 		}
 
-	} else { // No uploaded file.
+	}
+        else { // No uploaded file.
 		$errors[] = 'No file was uploaded.';
 		$temp = NULL;
 	}
@@ -53,7 +62,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 	// Check for a price:
 	if (is_numeric($_POST['price']) && ($_POST['price'] > 0)) {
 		$p = (float) $_POST['price'];
-	} else {
+	}
+        else {
 		$errors[] = 'Please enter the print\'s price!';
 	}
 
@@ -63,7 +73,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 	// Validate the artist...
 	if ( isset($_POST['dept']) && filter_var($_POST['dept'], FILTER_VALIDATE_INT, array('min_range' => 1))  ) {
 		$dept = $_POST['dept'];
-	} else { // No artist selected.
+	}
+        else { // No artist selected.
 		$errors[] = 'Please select the product\'s department!';
 	}
 	
@@ -121,7 +132,7 @@ if ( !empty($errors) && is_array($errors) ) {
 	
 	<p><b>Product Name:</b> <input type="text" name="product_name" size="30" maxlength="60" value="<?php if (isset($_POST['product_name'])) echo htmlspecialchars($_POST['product_name']); ?>" /></p>
 	
-	<p><b>Image:</b> <input type="file" name="image" /></p>
+	<p><b>Image:</b> <input type="file" name="img" /></p>
 	
 	<p><b>Department:</b> 
 	<select name="dept"><option>Select One</option>

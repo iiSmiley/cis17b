@@ -2,6 +2,11 @@
 // This page lets a user change their password.
 //Starting the session so we can carry user credintials (user_id, first_name, user_level)
 session_start();
+    require ('../includes/login_functions.inc.php');
+    if($_SESSION['user_level']!=1) {
+        redirect_user("access_denied.php");
+    }
+$page_title = 'The Coffee Connoisseur: Admin Page';
 $page_title = 'Change Your Password';
 include ('../includes/admin_header.html');
 

@@ -1,7 +1,7 @@
 <?php 
 session_start(); // Start a session.
 $page_title = 'The Coffee Connoisseur!';
-include ('includes/tccHeader.html');
+include ('includes/tcc_home_header.html');
 ?>
 <h1>Big Header</h1>
 <p>This is where you'll put the main page content. This content will differ for each page.</p>
@@ -14,6 +14,6 @@ include ('includes/tccHeader.html');
 <p>This is where you'll put the main page content. This content will differ for each page.</p>
 <p>This is where you'll put the main page content. This content will differ for each page.</p>
 <?php
-include ('includes/tccFooter.html');
+include ('includes/tcc_footer.html');
 ?>
 </html>

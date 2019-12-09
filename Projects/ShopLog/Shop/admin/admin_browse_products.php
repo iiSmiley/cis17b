@@ -1,8 +1,12 @@
 <?php # Script - browse_prints.php
+session_start();
+    require ('../includes/login_functions.inc.php');
+    if($_SESSION['user_level']!=1) {
+        redirect_user("access_denied.php");
+    }
 // This page displays the available prints (products).
-
 // Set the page title and include the HTML header:
-$page_title = 'Dicover Our Collection';
+$page_title = 'View Products List';
 include ('../includes/admin_header.html');
 
 require ('../mysqli_connect.php');
@@ -39,9 +43,9 @@ while ($row = mysqli_fetch_array ($r, MYSQLI_ASSOC)) {
 
 	// Display each record:
 	echo "\t<tr>
-                <td align=\"left\"><a href=\"edit_product.php?id={$row['prod_id']}\">Edit</a></td>
-                <td align=\"left\"><a href=\"delete_product.php?id={$row['prod_id']}\">Delete</a></td>
-		<td align=\"left\"><a href=\"browse_products.php?aid={$row['dept_id']}\">{$row['dept_name']}</a></td>
+                <td align=\"left\"><a href=\"admin_edit_product.php?id={$row['prod_id']}\">Edit</a></td>
+                <td align=\"left\"><a href=\"admin_delete_product.php?id={$row['prod_id']}\">Delete</a></td>
+		<td align=\"left\"><a href=\"admin_browse_products.php?aid={$row['dept_id']}\">{$row['dept_name']}</a></td>
 		<td align=\"left\"><a href=\"view_product.php?pid={$row['prod_id']}\">{$row['prod_name']}</a></td>
 		<td align=\"left\">{$row['description']}</td>
 		<td align=\"right\">\${$row['price']}</td>

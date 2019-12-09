@@ -3,6 +3,11 @@
 // This new version allows the results to be sorted in different ways.
 //Starting the session so we can carry user credintials (user_id, first_name, user_level)
 session_start();
+    require ('../includes/login_functions.inc.php');
+    if($_SESSION['user_level']!=1) {
+        redirect_user("access_denied.php");
+    }
+$page_title = 'The Coffee Connoisseur: Admin Page';
 $page_title = 'View the Current Users';
 include ('../includes/admin_header.html');
 echo '<h1>Registered Users</h1>';

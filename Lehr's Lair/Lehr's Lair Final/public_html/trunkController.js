@@ -287,7 +287,10 @@
     function endGame() {
         level.setEndTime();
         var time = level.getGameTime();
+        setCookie("time", time, 30);
+        //checkCookie("time");
         alert("Congratulations! You were able to escape the lair in "+time+ "seconds!");
+        window.open("sign_up.php");
     }
     
     function msg(string) {

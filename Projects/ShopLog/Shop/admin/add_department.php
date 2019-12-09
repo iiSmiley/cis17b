@@ -1,9 +1,9 @@
 <?php
-    /*session_start();
+    session_start();
     require ('includes/login_functions.inc.php');
     if($_SESSION['user_level']!=1) {
-    redirect_user("access_denied.php");
-    } */
+        redirect_user("access_denied.php");
+    } 
 ?>
 <?php # Script - add_artist.php
 // This page allows the administrator to add a department.

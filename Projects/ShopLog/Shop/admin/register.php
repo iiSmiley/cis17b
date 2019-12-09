@@ -7,7 +7,7 @@
         redirect_user("access_denied.php");
     }
 $page_title = 'Register';
-include ('includes/header.html');
+include ('../includes/admin_header.html');
 $f_name = $l_name = $email = $pswd1 = $pswd2 = "";
 // Check for form submission:
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -115,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		mysqli_close($dbc); // Close the database connection.
 
 		// Include the footer and quit the script:
-		include ('includes/footer.html'); 
+		include ('../includes/admin_footer.html'); 
 		exit();
 		
 	} else { // Report the errors.
