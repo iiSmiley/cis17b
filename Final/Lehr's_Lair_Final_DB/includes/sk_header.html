@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lehr's Lair Survival List (Hall of Fame)</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><?php echo (isset($page_title)) ? $page_title : 'Welcome!'; ?></title>
+        <link rel="stylesheet" type="text/css" href="includes/navbar.css">
+        
+    </head>
+    <body>
+        <ul class="nav1">
+            <li class="nav1"><a href="home.php">Lehr's Lair Survival List</a></li>
+        </ul>
+        <ul class="nav">
+            <li class="nav"><a href="view.php">View the List of Survivors</a></li>
+            <li class="nav" style="float:right">
+                <?php // Create a login/sign_up link:
+                    if (isset($_SESSION['user_id'])) {
+                        echo '<a href="user_edit.php">'.$_SESSION["first_name"].'</a>';
+                    }
+                    else {
+                        echo '<a href="sign_up.php">Join the Survivors</a>';
+                    }
+                    ?></li>
+            <li class="nav" style="float:right">    
+                <?php // Create a login/logout link:
+                    if (isset($_SESSION['user_id'])) {
+                        echo '<a href="logout.php">Logout</a>';
+                    }
+                    else {
+                        echo '<a href="uni_login.php">Login</a>';
+                    }
+                    ?></li>
+            
+        </ul>
+    </body>
+</html>
