@@ -4,9 +4,9 @@
 //Starting the session so we can carry user credintials (user_id, first_name, user_level)
 session_start();
 
-$page_title = 'Change Your Password';
-require ('includes/sk_header_1.html');
-require ('User.php');
+$page_title = 'Update Your Name';
+require ('../includes/sk_header_1.html');
+require ('../user/User.php');
 //require ('mysqli_connect.php');
 // Check for form submission:
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 			// Update in seession, include the footer and quit the script (to not show the form).
                         $_SESSION['first_name'] = $nfm;
-			include ('includes/sk_footer.html'); 
+			include ('../includes/tcc_footer.html'); 
 			exit();
 				
 		} 
@@ -85,11 +85,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             return $data;
         }
 ?>
-<h1>Update Your Name</h1>
+<h1>Change Your Password</h1>
 <form action="edit_name.php" method="post">
 	<p>Current Password: <input type="password" name="pass" size="10" maxlength="20" value="<?php if (isset($_POST['pass'])) echo $_POST['pass']; ?>"  /></p>
 	<p>New First Name: <input type="text" name="f_name" size="10" maxlength="20" value="<?php if (isset($_POST['f_name'])) echo $_POST['f_name']; ?>"  /></p>
 	<p>New Last Name : <input type="text" name="l_name" size="10" maxlength="20" value="<?php if (isset($_POST['l_name'])) echo $_POST['l_name']; ?>"  /></p>
 	<p><input type="submit" name="submit" value="Update Name" /></p>
 </form>
-<?php include ('includes/sk_footer.html'); ?>
+<?php include ('../includes/tcc_footer.html'); ?>

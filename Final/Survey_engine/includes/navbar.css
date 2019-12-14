@@ -1,0 +1,55 @@
+/*
+    Author     : Omar Alkendi
+*/
+ul.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+li.nav {
+  float: left; 
+}
+li.nav:last-child {
+  border-right: none;
+}
+li.nav a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+li.nav a:hover:not(.active) {
+  background-color: #111;
+}
+.active {
+  background-color: #4CAF50;
+}
+
+ul.nav1 {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color:  #CD853F;
+}
+li.nav1 {
+  float: left;
+  font-size: 2.5em;
+}
+li.nav1:last-child {
+  border-right: none;
+}
+li.nav1 a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+/*
+li.nav1 a:hover:not(.active) {
+  background-color:  #8B4513  ;
+}*/

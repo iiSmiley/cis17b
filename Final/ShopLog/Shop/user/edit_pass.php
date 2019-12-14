@@ -5,13 +5,17 @@
 session_start();
 
 $page_title = 'Change Your Password';
-require ('includes/sk_header_1.html');
-require ('User.php');
+require ('../includes/sk_header_1.html');
+require ('../user/User.php');
 //require ('mysqli_connect.php');
 // Check for form submission:
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	$user_id = $_SESSION['user_id'];
+        
+        //Regular expression
+        $re = '/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-_@#$%]).{6,20})/'; //RegEx for password
+        
 	$errors = array(); // Initialize an error array.
 	
 	// Check for the current password:
@@ -19,30 +23,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$errors[] = 'You forgot to enter your current password.';
 	}
         else {
+//                require ('mysqli_connect.php');
 		$p = test_input($_POST['pass']);
 	}
 
-	// Check for new first name
-	if (empty($_POST['f_name'])) {
-                $errors[] = 'You forgot to enter your new first name.';
-        }
+	// Check for a new password and match 
+	// against the confirmed password:
+	if (!empty($_POST['pass1'])) {
+		if ($_POST['pass1'] != $_POST['pass2']) {
+			$errors[] = 'Your new password did not match the confirmed password.';
+		}
+                else if (!preg_match($re, test_input($_POST['pass1']))) {
+                    //Match Format?
+                $errors[] = 'Your passowrd must:';
+                $errors[] = 'be 6~20 characters long';
+                $errors[] = 'includes 1 lowercase letter:';
+                $errors[] = 'includes 1 upercase letter:';
+                $errors[] = 'includes one special character -_!@#$%';
+                //echo "test pswd".!preg_match($re, $pswd1);
+                }
+                else {
+			$np =test_input($_POST['pass1']);
+		}
+	}
         else {
-                $nfm =test_input($_POST['f_name']);
+		$errors[] = 'You forgot to enter your new password.';
 	}
 	
-        // Check for new last name 
-	if (empty($_POST['l_name'])) {
-                $errors[] = 'You forgot to enter your new last name.';
-		}
-        else {
-		$nlm =test_input($_POST['l_name']);
-	}
-        
-        //Check if no name changes
-        if($nfm == $_SESSION['first_name'] && $nlm == $_SESSION['last_name']) {
-            $errors[] = 'No changes are occuring to your name! Please do not try to fool us!.';
-        }
-        
 	if (empty($errors)) { // If everything's OK.
 
                 //create a user instance to use the functions of the user class
@@ -50,11 +57,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $dbc = $user->DB();
                 if($user->check_pass($user_id, $p, $dbc)) {
 			//Make the update
-			$user->update_name($user_id, $nfm, $nlm, $dbc);
+			$user->update_pass($user_id, $np, $dbc);
 
-			// Update in seession, include the footer and quit the script (to not show the form).
-                        $_SESSION['first_name'] = $nfm;
-			include ('includes/sk_footer.html'); 
+			// Include the footer and quit the script (to not show the form).
+			include ('../includes/tcc_footer.html'); 
 			exit();
 				
 		} 
@@ -85,11 +91,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             return $data;
         }
 ?>
-<h1>Update Your Name</h1>
-<form action="edit_name.php" method="post">
+<h1>Change Your Password</h1>
+<form action="edit_pass.php" method="post">
 	<p>Current Password: <input type="password" name="pass" size="10" maxlength="20" value="<?php if (isset($_POST['pass'])) echo $_POST['pass']; ?>"  /></p>
-	<p>New First Name: <input type="text" name="f_name" size="10" maxlength="20" value="<?php if (isset($_POST['f_name'])) echo $_POST['f_name']; ?>"  /></p>
-	<p>New Last Name : <input type="text" name="l_name" size="10" maxlength="20" value="<?php if (isset($_POST['l_name'])) echo $_POST['l_name']; ?>"  /></p>
-	<p><input type="submit" name="submit" value="Update Name" /></p>
+	<p>New Password: <input type="password" name="pass1" size="10" maxlength="20" value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1']; ?>"  /></p>
+	<p>Confirm New Password: <input type="password" name="pass2" size="10" maxlength="20" value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2']; ?>"  /></p>
+	<p><input type="submit" name="submit" value="Change Password" /></p>
 </form>
-<?php include ('includes/sk_footer.html'); ?>
+<?php include ('../includes/tcc_footer.html'); ?>

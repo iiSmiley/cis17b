@@ -4,7 +4,7 @@
 //Starting the session so we can carry user credintials (user_id, first_name, user_level)
 session_start();
 
-$page_title = 'Change Your Password';
+$page_title = 'Update Your Email';
 require ('includes/sk_header_1.html');
 require ('User.php');
 //require ('mysqli_connect.php');
